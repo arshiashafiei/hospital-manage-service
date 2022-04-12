@@ -1,13 +1,8 @@
 import java.util.ArrayList;
 
 public class PatientManager {
-    
-    private ArrayList<Patient> patients;
 
-
-    public PatientManager() {
-        patients = new ArrayList<>();
-    }
+    private static ArrayList<Patient> patients = new ArrayList<>();
 
     public void register(String name, String lastName, String password, String phoneNumber) {
         patients.add(new Patient(name, lastName, password, phoneNumber));
@@ -22,13 +17,35 @@ public class PatientManager {
         return false;
     }
 
+    public Patient getPatientInfo(String username) {
+        for (Patient patient : patients) {
+            if (patient.getCaseNumber().equals(username)) {
+                return patient;
+            }
+        }
+        return null;
+    }
+
+    public boolean reserve(String doctorUsername, String patientUsername) {
+        Reservation reservation = new Reservation(doctorUsername, patientUsername);
+        DoctorManager doctorManager = new DoctorManager();
+        ArrayList<Secretary> secretaries = doctorManager.getDoctorSecretaries(doctorUsername);
+        if (secretaries.isEmpty()) {
+            return false;
+        }
+        getPatientInfo(patientUsername).getReservationList().add(reservation);
+        for (Secretary secretary : secretaries) {
+            secretary.getReservationList().add(reservation);
+        }
+        return true;
+    }
+
     public ArrayList<Patient> getPatients() {
-        return this.patients;
+        return patients;
     }
 
-    public void setPatients(ArrayList<Patient> patients) {
-        this.patients = patients;
+    public void setPatients(ArrayList<Patient> newPatients) {
+        patients = newPatients;
     }
-
 
 }

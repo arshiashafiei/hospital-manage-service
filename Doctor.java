@@ -4,6 +4,7 @@ public class Doctor {
     private String password;
     private String personnelNumber;
     private String specialty;
+    private static int doctorCount;
 
     @Override
     public String toString() {
@@ -16,11 +17,12 @@ public class Doctor {
                 "}";
     }
 
-    public Doctor(String name, String lastName, String password, String personnelNumber, String specialty) {
+    public Doctor(String name, String lastName, String password, String specialty) {
+        doctorCount++;
         this.name = name;
         this.lastName = lastName;
         this.password = password;
-        this.personnelNumber = personnelNumber;
+        this.personnelNumber = Integer.toString(doctorCount);
         this.specialty = specialty;
     }
 

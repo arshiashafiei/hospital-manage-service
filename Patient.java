@@ -91,11 +91,11 @@ public class Patient {
         this.reservationList = reservationList;
     }
     
-    public static int getPatientCount(){
-        return patientCount;
-    }
+    // public static int getPatientCount(){
+    //     return patientCount;
+    // }
     
-    public static void setPatientCount(int newPatientCount){
-        patientCount = newPatientCount;
-    }
+    // public static void setPatientCount(int newPatientCount){
+    //     patientCount = newPatientCount;
+    // }
 }
