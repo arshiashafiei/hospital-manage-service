@@ -1,3 +1,7 @@
+package Controller;
+
+import Model.Admin;
+
 public class AdminManager {
     private Admin admin;
 

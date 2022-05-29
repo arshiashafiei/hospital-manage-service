@@ -1,14 +1,16 @@
+package Model;
+
 import java.util.ArrayList;
 
 public class Prescription {
-    private int prescriptionNumber;
+    private static int prescriptionNumber;
     private String date;
     private ArrayList<Medicine> medicineList;
     private String doctorPersonnelNumber;
     private String patientCaseNumber;
 
-    public Prescription(int prescriptionNumber, String date, String doctorPersonnelNumber, String patientCaseNumber) {
-        this.prescriptionNumber = prescriptionNumber;
+    public Prescription(String date, String doctorPersonnelNumber, String patientCaseNumber) {
+        prescriptionNumber++;
         this.date = date;
         this.medicineList = new ArrayList<>();
         this.doctorPersonnelNumber = doctorPersonnelNumber;
