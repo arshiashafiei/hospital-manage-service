@@ -17,53 +17,75 @@ public class DoctorPanel {
     }
 
     public void doctorMenu(String doctorUsername) {
-        System.out.println("Select a number\n1: Add secretary\n2: Show medicines\n5: Logout");
-        input.nextLine();
-        String selection = input.next();
-        if (selection.equals("1")) {
-            addSecretary(doctorUsername);
-        } else if (selection.equals("2")) {
-            showMedicines();
-        } else if (selection.equals("5")) {
-            return;
+        System.out.println("Select a number\n1: Add secretary\n2: Show medicines\n3: Logout");
+        String selection = input.nextLine();
+        switch (selection) {
+            case "1":
+                addSecretary(doctorUsername);
+                break;
+            case "2":
+                showMedicines();
+                break;
+            case "3":
+                return;
         }
         doctorMenu(doctorUsername);
     }
 
     public void addSecretary(String doctorUsername) {
-        System.out.print("Enter Model.Secretary firstname: ");
+        System.out.print("Enter Secretary firstname: ");
         String firstName = input.nextLine();
-        System.out.print("Enter Model.Secretary lastname: ");
+        System.out.print("Enter Secretary lastname: ");
         String lastName = input.nextLine();
-        System.out.print("Enter Model.Secretary username: ");
+        System.out.print("Enter Secretary username: ");
         String username = input.nextLine();
-        System.out.print("Enter Model.Secretary password: ");
+        System.out.print("Enter Secretary password: ");
         String password = input.nextLine();
-        System.out.print("Enter Model.Secretary phone number: ");
+        System.out.print("Enter Secretary phone number: ");
         String phoneNumber = input.nextLine();
-        System.out.print("Enter Model.Secretary email: ");
+        System.out.print("Enter Secretary email: ");
         String email = input.nextLine();
-        System.out.print("Enter Model.Secretary hours To Work daily: ");
+        System.out.print("Enter Secretary hours To Work daily: ");
         double hoursToWorkInDay = input.nextDouble();
         input.nextLine();
-        System.out.print("Enter Model.Secretary salary in a month: ");
+        System.out.print("Enter Secretary salary in a month: ");
         double salary = input.nextDouble();
         input.nextLine();
 
-        System.out.print("Enter Model.Secretary doctor Personnel Number: ");
+        System.out.print("Enter Secretary doctor Personnel Number: ");
         String doctorPersonnelNumber = input.nextLine();
 
         doctorManager.addSecretary(firstName, lastName, username, password, phoneNumber, email, hoursToWorkInDay, salary, doctorPersonnelNumber);
-        ArrayList<Secretary> doctorSecretaries = patientManager.getDoctorSecretaries(username);
-        System.out.println("Model.Secretary personnel number: "
+        ArrayList<Secretary> doctorSecretaries = patientManager.getDoctorSecretaries(doctorUsername);
+        System.out.println("Secretary personnel number: "
                 + doctorSecretaries.get(doctorSecretaries.size() - 1));
     }
 
     public void showMedicines() {
+        int i = 1;
         for (Medicine medicine : Hospital.getMedicines()) {
-            System.out.println("Name: " + medicine.getName() + " | Price: "
+            System.out.println("ID: " + i + " Name: " + medicine.getName() + " | Price: "
                     + medicine.getPrice() + " | Expiry date: " + medicine.getExpiryDate() + " | Production date: "
                     + medicine.getProductionDate());
+            i++;
         }
     }
+
+//    public Medicine selectMedicine() {
+//        String selected  = input.nextLine();
+//        return Hospital.getMedicines().get(Integer.parseInt(selected) - 1);
+//    }
+
+//    public void visitPatient(String doctorUsername) {
+//        Patient patient = sec.getReadyToVisitPatient(doctorUsername);
+//        ArrayList<Medicine> medicines = new ArrayList<>();
+//        Prescription prescription = new Prescription(Hospital.getTime().getSystemTime(), );
+//        showMedicines();
+//        boolean condition = true;
+//        while (condition) {
+//            medicines.add(selectMedicine());
+//            prescription.setMedicineList(medicines);
+//
+//        }
+//    }
 }

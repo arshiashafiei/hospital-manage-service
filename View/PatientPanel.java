@@ -47,35 +47,50 @@ public class PatientPanel {
                 3: Show info
                 4: Reserve
                 5: show reservations
-                6: logout""");
+                6: logout"""
+        );
         String selection = input.nextLine();
-        if (selection.equals("1")) {
-            editInfo(username);
-        } else if (selection.equals("2")) {
-            showDoctors();
-        } else if (selection.equals("3")) {
-            showInfo(username);
-        } else if (selection.equals("4")) {
-            reserve(username);
-        } else if (selection.equals("5")) {
-            showReservation(username);
-        } else if (selection.equals("6")) {
-            return;
+        switch (selection) {
+            case "1":
+                editInfo(username);
+                break;
+            case "2":
+                showDoctors();
+                break;
+            case "3":
+                showInfo(username);
+                break;
+            case "4":
+                reserve(username);
+                break;
+            case "5":
+                showReservation(username);
+                break;
+            case "6":
+                return;
         }
         patientMenu(username);
     }
 
     public void editInfo(String username) {
-        System.out.println("What do you want to change?\n1: Name\n2: Last name\n3: Password\n4: Phone number");
+        System.out.println("What do you want to change?\n1: Name\n2: Last name\n3: Password\n4: Phone number\n5: Email");
         String selection = input.nextLine();
-        if (selection.equals("1")) {
-            patientManager.getPatientInfo(username).setFirstName(input.nextLine());
-        } else if (selection.equals("2")) {
-            patientManager.getPatientInfo(username).setLastName(input.nextLine());
-        } else if (selection.equals("3")) {
-            patientManager.getPatientInfo(username).setPassword(input.nextLine());
-        } else if (selection.equals("4")) {
-            patientManager.getPatientInfo(username).setPhoneNumber(input.nextLine());
+        switch (selection) {
+            case "1":
+                patientManager.getPatientInfo(username).setFirstName(input.nextLine());
+                break;
+            case "2":
+                patientManager.getPatientInfo(username).setLastName(input.nextLine());
+                break;
+            case "3":
+                patientManager.getPatientInfo(username).setPassword(input.nextLine());
+                break;
+            case "4":
+                patientManager.getPatientInfo(username).setPhoneNumber(input.nextLine());
+                break;
+            case "5":
+                patientManager.getPatientInfo(username).setEmail(input.nextLine());
+                break;
         }
 
     }

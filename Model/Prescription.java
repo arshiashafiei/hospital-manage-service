@@ -1,15 +1,16 @@
 package Model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Prescription {
     private static int prescriptionNumber;
-    private String date;
+    private LocalDateTime date;
     private ArrayList<Medicine> medicineList;
     private String doctorPersonnelNumber;
     private String patientCaseNumber;
 
-    public Prescription(String date, String doctorPersonnelNumber, String patientCaseNumber) {
+    public Prescription(LocalDateTime date, String doctorPersonnelNumber, String patientCaseNumber) {
         prescriptionNumber++;
         this.date = date;
         this.medicineList = new ArrayList<>();
@@ -17,19 +18,19 @@ public class Prescription {
         this.patientCaseNumber = patientCaseNumber;
     }
 
-    public int getPrescriptionNumber() {
-        return this.prescriptionNumber;
+    public static int getPrescriptionNumber() {
+        return prescriptionNumber;
     }
 
-    public void setPrescriptionNumber(int prescriptionNumber) {
-        this.prescriptionNumber = prescriptionNumber;
+    public static void setPrescriptionNumber(int prescriptionNumber) {
+        Prescription.prescriptionNumber = prescriptionNumber;
     }
 
-    public String getDate() {
-        return this.date;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

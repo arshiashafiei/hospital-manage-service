@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 public class Secretary extends Employee {
     private String doctorPersonnelNumber;
-    private ArrayList<Reservation> dailyReservationList;
-    private ArrayList<Reservation> weeklyReservationList;
+    private ArrayList<Reservation> reservationList;
 
     public Secretary(String firstName, String lastName, String username, String password, String phoneNumber, String email, double hoursToWorkInDay, double salary, String doctorPersonnelNumber) {
         super(firstName, lastName, username, password, phoneNumber, email, hoursToWorkInDay, salary);
         this.doctorPersonnelNumber = doctorPersonnelNumber;
-        this.dailyReservationList = new ArrayList<>();
-        this.weeklyReservationList = new ArrayList<>();
+        this.reservationList = new ArrayList<>();
     }
 
     public String getDoctorPersonnelNumber() {
@@ -22,19 +20,13 @@ public class Secretary extends Employee {
         this.doctorPersonnelNumber = doctorPersonnelNumber;
     }
 
-    public ArrayList<Reservation> getDailyReservationList() {
-        return dailyReservationList;
+    public ArrayList<Reservation> getReservationList() {
+        return reservationList;
     }
 
-    public void setDailyReservationList(ArrayList<Reservation> dailyReservationList) {
-        this.dailyReservationList = dailyReservationList;
+    public void setReservationList(ArrayList<Reservation> reservationList) {
+        this.reservationList = reservationList;
     }
 
-    public ArrayList<Reservation> getWeeklyReservationList() {
-        return weeklyReservationList;
-    }
 
-    public void setWeeklyReservationList(ArrayList<Reservation> weeklyReservationList) {
-        this.weeklyReservationList = weeklyReservationList;
-    }
 }

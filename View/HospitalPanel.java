@@ -23,11 +23,17 @@ public class HospitalPanel {
                 DoctorPanel doctorPanel = new DoctorPanel();
                 doctorPanel.doctorMenu(username);
             } else if (user instanceof Janitor) {
-
+                JanitorPanel janitorPanel = new JanitorPanel();
+                janitorPanel.janitorMenu(username);
             } else if (user instanceof Guard) {
-
+                GuardPanel guardPanel = new GuardPanel();
+                guardPanel.guardMenu(username);
+            } else if (user instanceof Secretary) {
+                SecretaryPanel secretaryPanel = new SecretaryPanel();
+                secretaryPanel.secretaryMenu(username);
             }
+        } else {
+            System.out.println("Failed to log in");
         }
-        System.out.println("Failed to log in");
     }
 }

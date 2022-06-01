@@ -26,7 +26,7 @@ public class PatientManager {
         }
         getPatientInfo(patientUsername).getReservationList().add(reservation);
         for (Secretary secretary : secretaries) {
-            secretary.getDailyReservationList().add(reservation);
+            secretary.getReservationList().add(reservation);
         }
         return true;
     }

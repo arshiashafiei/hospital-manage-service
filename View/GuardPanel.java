@@ -1,19 +1,16 @@
 package View;
 
-import Controller.*;
-import Model.*;
-
 import java.util.Scanner;
 
-public class JanitorPanel {
+public class GuardPanel {
     private final Scanner input = new Scanner(System.in);
 
-    public void janitorMenu(String janitorUsername) {
+    public void guardMenu(String guardUsername) {
         System.out.println("Select a number\n1: Show Reservation\n2: Show medicines\n5: Logout");
         String selection = input.nextLine();
         switch (selection) {
             case "1":
-                //showReservations(janitorUsername);
+                //showReservations(guardUsername);
                 break;
             case "2":
                 //showMedicines();
@@ -21,7 +18,6 @@ public class JanitorPanel {
             case "5":
                 return;
         }
-        janitorMenu(janitorUsername);
+        guardMenu(guardUsername);
     }
-
 }

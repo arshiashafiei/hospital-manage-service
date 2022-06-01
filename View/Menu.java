@@ -27,7 +27,7 @@ public class Menu {
                 patientPanel.signup();
                 break;
             case "2":
-                System.out.println("Select a number\n1: login as Model.Admin\n2: log in as others");
+                System.out.println("Select a number\n1: login as Admin\n2: log in as others");
                 selection = input.nextLine();
                 switch (selection) {
                     case "1":

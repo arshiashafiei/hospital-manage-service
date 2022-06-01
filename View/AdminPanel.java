@@ -22,8 +22,11 @@ public class AdminPanel {
 
 
     public void login() {
-        System.out.println("Enter your username and password:");
-        if (!adminManager.authenticate(input.next(), input.next())) {
+        System.out.println("Enter your username:");
+        String username = input.nextLine();
+        System.out.println("Enter your password:");
+        String pass = input.nextLine();
+        if (!adminManager.authenticate(username, pass)) {
             System.out.println("Login failed! try again");
             return;
         }
@@ -32,7 +35,7 @@ public class AdminPanel {
     }
 
     public void adminMenu() {
-        System.out.println("Select a number\n1: Add an Model.Employee\n2: Add Model.Medicine\n3:Log out");
+        System.out.println("Select a number\n1: Add an Employee\n2: Add Medicine\n3: Change time\n4: Log out");
         String selection = input.nextLine();
         switch (selection) {
             case "1":
@@ -42,6 +45,9 @@ public class AdminPanel {
                 addMedicine();
                 break;
             case "3":
+                changeDate();
+                break;
+            case "4":
                 return;
         }
         adminMenu();
@@ -49,7 +55,7 @@ public class AdminPanel {
     }
 
     public void registerEmployee() {
-        System.out.println("select an employee to add:\n1. Model.Doctor\n2. Model.Janitor\n3. Model.Guard");
+        System.out.println("select an employee to add:\n1. Doctor\n2. Janitor\n3. Guard");
         String selection = input.nextLine();
         switch (selection) {
             case "1":
@@ -93,83 +99,86 @@ public class AdminPanel {
         if (doctorManager.register(firstname, lastname, username, password, phoneNumber, email, hoursToWork, salary, specialty, biography)) {
             System.out.println("success!");
             int size = Hospital.getDoctors().size();
-            System.out.println( "Model.Doctor personnel number: " + Hospital.getDoctors().get(size - 1).getPersonnelNumber());
+            System.out.println( "Doctor personnel number: " + Hospital.getDoctors().get(size - 1).getPersonnelNumber());
         } else {
             System.out.println("failed! try again");
         }
     }
 
     public void registerGuard() {
-        System.out.print("Enter Model.Guard firstname: ");
+        System.out.print("Enter Guard firstname: ");
         String firstname = input.nextLine();
-        System.out.print("Enter Model.Guard lastname: ");
+        System.out.print("Enter Guard lastname: ");
         String lastname = input.nextLine();
-        System.out.print("Enter Model.Guard username: ");
+        System.out.print("Enter Guard username: ");
         String username = input.nextLine();
-        System.out.print("Enter Model.Guard password: ");
+        System.out.print("Enter Guard password: ");
         String password = input.nextLine();
-        System.out.print("Enter Model.Guard phone number: ");
+        System.out.print("Enter Guard phone number: ");
         String phoneNumber = input.nextLine();
-        System.out.print("Enter Model.Guard email: ");
+        System.out.print("Enter Guard email: ");
         String email = input.nextLine();
-        System.out.print("Enter Model.Guard hours To Work daily: ");
+        System.out.print("Enter Guard hours To Work daily: ");
         double hoursToWork = input.nextDouble();
         input.nextLine();
-        System.out.print("Enter Model.Guard salary in a month: ");
+        System.out.print("Enter Guard salary in a month: ");
         double salary = input.nextDouble();
         input.nextLine();
 
         if (guardManager.register(firstname, lastname, username, password, phoneNumber, email, hoursToWork, salary)) {
             System.out.println("success!");
             int size = Hospital.getGuards().size();
-            System.out.println( "Model.Guard personnel number: " + Hospital.getGuards().get(size - 1).getPersonnelNumber());
+            System.out.println( "Guard personnel number: " + Hospital.getGuards().get(size - 1).getPersonnelNumber());
         } else {
             System.out.println("failed! try again");
         }
     }
     public void registerJanitor() {
-        System.out.print("Enter Model.Janitor firstname: ");
+        System.out.print("Enter Janitor firstname: ");
         String firstname = input.nextLine();
-        System.out.print("Enter Model.Janitor lastname: ");
+        System.out.print("Enter Janitor lastname: ");
         String lastname = input.nextLine();
-        System.out.print("Enter Model.Janitor username: ");
+        System.out.print("Enter Janitor username: ");
         String username = input.nextLine();
-        System.out.print("Enter Model.Janitor password: ");
+        System.out.print("Enter Janitor password: ");
         String password = input.nextLine();
-        System.out.print("Enter Model.Janitor phone number: ");
+        System.out.print("Enter Janitor phone number: ");
         String phoneNumber = input.nextLine();
-        System.out.print("Enter Model.Janitor email: ");
+        System.out.print("Enter Janitor email: ");
         String email = input.nextLine();
-        System.out.print("Enter Model.Janitor hours To Work daily: ");
+        System.out.print("Enter Janitor hours To Work daily: ");
         double hoursToWork = input.nextDouble();
         input.nextLine();
-        System.out.print("Enter Model.Janitor salary in a month: ");
+        System.out.print("Enter Janitor salary in a month: ");
         double salary = input.nextDouble();
         input.nextLine();
 
         if (janitorManager.register(firstname, lastname, username, password, phoneNumber, email, hoursToWork, salary)) {
             System.out.println("success!");
             int size = Hospital.getJanitors().size();
-            System.out.println( "Model.Janitor personnel number: " + Hospital.getJanitors().get(size - 1).getPersonnelNumber());
+            System.out.println( "Janitor personnel number: " + Hospital.getJanitors().get(size - 1).getPersonnelNumber());
         } else {
             System.out.println("failed! try again");
         }
     }
 
     public void addMedicine() {
-        System.out.println("Enter Model.Medicine name: ");
+        System.out.println("Enter Medicine name: ");
         String name = input.nextLine();
-        System.out.println("Enter Model.Medicine price: ");
+        System.out.println("Enter Medicine price: ");
         String price = input.nextLine();
-        System.out.println("Enter Model.Medicine production date: ");
+        System.out.println("Enter Medicine production date: ");
         String productionDate = input.nextLine();
-        System.out.println("Enter Model.Medicine expiry date: ");
+        System.out.println("Enter Medicine expiry date: ");
         String expiryDate = input.nextLine();
         doctorManager.addMedicine(name, price, productionDate, expiryDate);
     }
 
-    public void moveDateForward(int daysToAdd) {
-        Hospital.getTime().addDay(daysToAdd);
+    public void changeDate() {
+        System.out.println("How many days do you want to move date forward: ");
+        String daysToAdd = input.nextLine();
+        adminManager.moveDateForward(Integer.parseInt(daysToAdd));
+        System.out.println("Successfully changed system date");
     }
 
 }

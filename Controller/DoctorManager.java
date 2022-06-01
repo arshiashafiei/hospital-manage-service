@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Doctor;
-import Model.Hospital;
-import Model.Medicine;
-import Model.Secretary;
+import Model.*;
 
 import java.util.ArrayList;
 
@@ -28,4 +25,7 @@ public class DoctorManager {
         Hospital.getSecretaries().add(new Secretary(firstName, lastName, username, password, phoneNumber, email, hoursToWorkInDay, salary, doctorPersonnelNumber));
     }
 
+    public Doctor getDoctorPersonnelNumber(String username) {
+        return (Doctor) HospitalManager.findUser(username);
+    }
 }

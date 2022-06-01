@@ -1,8 +1,10 @@
 package Model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDateTime;
 
-public class Reservation {
+public class Reservation implements Comparable<Reservation> {
     private static int reserveCounter;
     private final int reserveNumber;
     private LocalDateTime startDate;
@@ -15,10 +17,27 @@ public class Reservation {
     @Override
     public String toString() {
         return "{" +
-            " date='" + getStartDate() + "'" +
+            " date='" + getStartDate().toString() + "'" +
             ", doctorPersonnelNumber='" + getDoctorPersonnelNumber() + "'" +
             ", patientCaseNumber='" + getPatientCaseNumber() + "'" +
             "}";
+    }
+
+    @Override
+    public int compareTo(@NotNull Reservation o) {
+        if ((o.isEmergency() && this.isEmergency()) || (!o.isEmergency() && !this.isEmergency())) {
+            if (o.getStartDate().isBefore(this.getStartDate())) {
+                return -1;
+            } else if (o.getStartDate().isAfter(this.getStartDate())) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else if (o.isEmergency() && !this.isEmergency()) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 
 
@@ -84,4 +103,6 @@ public class Reservation {
     public int getReserveNumber() {
         return reserveNumber;
     }
+
+
 }

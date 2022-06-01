@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Admin;
+import Model.Hospital;
 
 public class AdminManager {
     private Admin admin;
@@ -14,5 +15,9 @@ public class AdminManager {
             return true;
         }
         return false;
+    }
+
+    public void moveDateForward(int daysToAdd) {
+        Hospital.getTime().addDay(daysToAdd);
     }
 }

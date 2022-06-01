@@ -18,7 +18,7 @@ public class HospitalManager {
     }
 
     public static User findUser(String username) {
-        for (User user : getAllEmployees()) {
+        for (User user : getAllUsers()) {
             if (user.getUsername().equals(username)) {
                 return user;
             }
